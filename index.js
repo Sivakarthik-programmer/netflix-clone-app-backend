@@ -7,7 +7,7 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 app.use(cors({
-  origin: 'https://your-actual-netlify-url.netlify.app'
+  origin: 'https://netflix-clone-app-backend.onrender.com'
 }))
 
 const tmdb = axios.create({
