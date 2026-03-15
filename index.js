@@ -10,6 +10,17 @@ app.use(cors({
   origin: 'https://netflix-clone-app-backend.onrender.com'
 }))
 
+
+// Keep Render from sleeping — pings itself every 14 minutes
+setInterval(() => {
+  https.get('https://netflix-clone-app-backend.onrender.com', (res) => {
+    console.log(`Keep-alive ping: ${res.statusCode}`)
+  }).on('error', (err) => {
+    console.log('Ping error:', err.message)
+  })
+}, 14 * 60 * 1000)
+
+
 const tmdb = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
   params: {
